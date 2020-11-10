@@ -198,7 +198,8 @@ baseurl:
 
 This is `baseurl:` with nothing after it. Not even a space.
 
-### Rakefile
+### Rakefile- link: //github.com/sims1253
+  icon: icon-github
 
 I have added a boilerplate Rakefile directly from the [jekyll-rake-boilerplate repo](https://github.com/gummesson/jekyll-rake-boilerplate). This saves you a small amount of time by prepending the date on a post name and populated the bare minimum of YAML front matter in the file. Please visit the link to the repo to find out how it runs. One thing to note is that there should be *no* space between the task and the opening bracket of your file name. ```rake post["Title"]``` will work while ```rake post ["Title"]``` will not.
 
