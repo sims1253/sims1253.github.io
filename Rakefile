@@ -23,7 +23,7 @@ task :publish => [:generate] do
     system "rm -rf *"
     system "mv #{tmp}/* ."
     message = "Site updated at #{Time.now.utc}"
-    system "echo 'foo.com\nwww.foo.com' > CNAME"
+    system "echo 'scholzmx.com\nwww.scholzmx.com' > CNAME"
     system "git add ."
     system "git commit -am #{message.shellescape}"
     system "git push origin gh-pages --force"
