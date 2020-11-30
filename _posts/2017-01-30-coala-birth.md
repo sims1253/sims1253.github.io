@@ -78,7 +78,7 @@ lot of applications and so far it looks promising.
 
 And finally Hemang and Kaisar wove their web-dev magic (dark arts if you ask
 me) and created not only a new [landing page](http://coala.io) but also
-this awesome [projects page](http://projects.coala.io). Although evil
+this awesome [projects page](https://projects.coala.io). Although evil
 tongues claim the landing page was not only a community team effort I claim
 that all your page are belong to us.
 

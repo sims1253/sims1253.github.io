@@ -38,7 +38,7 @@ generally let's me keep eyes on the hoard with less distraction.
 ### Projects Page
 
 So I talked about the project page in the first post.
-Go visit <projects.coala.io> and see for yourself.
+Go visit [projects.coala.io](https://projects.coala.io) and see for yourself.
 It is absolutely gorgeous.
 Again designed by Hemang and deployed by Kaisar (our dev - ops dream team,
 praise be, praise be).
