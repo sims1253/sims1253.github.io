@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>GSoC 2017 Postmortem Part 1: Overview</title>
+  <meta name="description" content="The 2017 GSoC is over and it was awesome. We had 10 great students(Yes all of them!) and a tremendous experience for all of us.">
+
+  <!-- Google Fonts loaded here depending on setting in _data/options.yml true loads font, blank does not-->
+  
+
+  <!-- Load up MathJax script if needed ... specify in /_data/options.yml file-->
+  
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: [
+      "MathMenu.js",
+      "MathZoom.js",
+      "AssistiveMML.js",
+      "a11y/accessibility-menu.js"
+    ],
+    jax: ["input/TeX", "output/CommonHTML"],
+    TeX: {
+      extensions: [
+        "AMSmath.js",
+        "AMSsymbols.js",
+        "noErrors.js",
+        "noUndefined.js",
+      ]
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+ <!--   <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+  
+
+  <link rel="stylesheet" type="text/css" href="/css/tufte.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/css/print.css" media="print"> -->
+
+  <link rel="canonical" href="/articles/17/gsoc-2017-postmortem-pt1">
+
+  <link rel="alternate" type="application/rss+xml" title="Maximilian Scholz" href="/feed.xml" />
+</head>
+
+  <body>
+    <!--- Header and nav template site-wide -->
+<header>
+    <nav class="group">
+	<a href="/"><img class="badge" src="/assets/img/badge_me.png" alt="CH"></a>
+	
+	
+		
+  	
+		
+		    
+		      <a href="/css/print.css"></a>
+		    
+	    
+  	
+		
+  	
+		
+		    
+		      <a href="/">About</a>
+		    
+	    
+  	
+		
+		    
+		      <a href="/blog/">blog</a>
+		    
+	    
+  	
+		
+		    
+		      <a href="/page/">Foo</a>
+		    
+	    
+  	
+	</nav>
+</header>
+    <article class="group">
+      <h1>GSoC 2017 Postmortem Part 1: Overview</h1>
+<p class="subtitle">November 2, 2017</p>
+
+<p>The 2017 GSoC is over and it was awesome. We had 10 great students
+(Yes all of them!) and a tremendous experience for all of us.
+<!--more-->
+In this series I’ll try to reflect on how the summer went from the point
+of view of the main admin for coala.
+As I both feel that reading very long blog posts is hard and that I
+won’t be able to write everything down in one go, I will split this up
+in multiple parts.
+How many, I don’t know at this point.</p>
+
+<h2 id="the-admin-role-gsoc-and-me">The Admin Role, GSoC and Me</h2>
+
+<p>To give some perspective to the things I write, here some background
+about what my role and background were:</p>
+
+<p>My role in this year’s Google Summer of Code for coala was being the
+main org admin. This meant, that I (mainly) was responsible for
+everything coala should deliver during those months.
+I had two backup admins with @sils and @jayvdb, who both were very
+helpful.
+<strong>And I want to highlight that a lot of the time when I write “I” that
+is actually all three of us (and sometimes also mentors).</strong>
+I just didn’t think about adding “me and all the lovely people that
+helped me” but it is what I mean most of the time.
+You can replace most “I”s and “me”s in this text with “we”.</p>
+
+<h3 id="org-application">Org Application</h3>
+<p>As an admin, my job is not to do everything myself, but to
+make sure everything gets done.
+And, if no one else will do it, then it becomes my job.
+This started with the org application to the program itself.
+Writing the application and reviewing what input others had given,
+gathering information from past years and recruiting mentors.
+During that phase we also met Stephanie Taylor at FOSSDEM and got some
+feedback on our application and our newly created
+<a href="https://projects.coala.io/">projects page</a>.
+Again, I was responsible for all the feedback being implemented, not
+necessarily doing so myself.</p>
+
+<h3 id="student-application">Student Application</h3>
+<p>After coala was accepted into the program, the student application phase
+soon opened.
+During this phase, my main work consisted of figuring out how we should
+cope with the insane amount of applications we received, building a
+process that would somehow be able to handle them (hint: we kind of
+failed with this), review applications and support mentors and students
+on their way to getting to know each other and writing applications.
+I am pretty sure that this part will get it’s own post and will probably
+be the largest one of them all.
+We learned a lot in this area this year but it wasn’t without growing
+pains sadly.
+At the end of the student application phase came the time to choose
+which student’s we would accept.
+With the process we had in place this year, I had to collect feedback
+from the mentors, form my own opinion about the students and in the end
+make the decision, which students we wanted to accept.
+And finally during this phase my job was to listen to all those, whose
+dreams I crushed by not choosing them.</p>
+
+<h3 id="bonding-and-coding-phases">Bonding and Coding Phases</h3>
+<p>When the actual part of GSoC started, I could actually start to relax a
+little bit.
+Most of the work now lay in the hands of the students, mentors and
+co-mentors.
+During this time I answered a lot of “how are we handling this thing”
+questions from students and mentors.
+I usually sent one or two mails per phase to both students and mentors,
+describing what they had to do during the current phase and reminding
+them of any upcoming deadlines.
+If any questions or problems came up and I felt the answer might help
+the other participants, I also added those things.
+Finally, I did some checkups on mentors and students, just to make
+sure that there no hidden problems or friction between anyone we didn’t
+know about.</p>
+
+<h3 id="evaluations">Evaluations</h3>
+<p>The last part of GSoC (at least what I have in my head right now) were
+the evaluations.
+I will group them, as they essentially are the same every time in terms
+of what I had to do.
+I reminded the mentors in the phase starting mail that there would be
+evaluations and when our internal and when Google’ deadline was.
+Then I gave another reminder a few days before the evaluation opened,
+highlighting what mentors should focus on and some instructions about
+what those evaluations are for and about.
+During the evaluation phase I essentially just pinged every mentor that
+I felt might be running a little late and made sure that all evaluations
+were filled on time.
+In one case, by filling it myself.
+More about that when we arrive in that chapter.</p>
+
+<h3 id="compensation-and-other-money-things">Compensation (and other money things)</h3>
+<p>I think that it is important to be transparent, especially in an open
+source project like coala and when handling something where so many
+people have worked on as GSoC.
+This is why I’d like to at least mention, that I received compensation
+from coala for the admin work I did.
+1500€ to be precise.
+This was decided by a vote
+(<a href="https://github.com/coala/cEPs/blob/master/cEP-0001.md">c-level decision</a>)
+by the coala maintainers and taken from the money coala as an
+organization received from Google.
+The amount was roughly estimated using the german (where I am from)
+minimum wage of 8.50€ and using 8h/week as the work hours.
+Make of this what you will.
+I just felt it noteworthy.</p>
+
+<p>I guess I might use this as a final chapter to talk about the money we
+received, and what we plan on doing with it.
+And in that way also shine a light on the growing coala association</p>
+
+<p>I will probably write the second part on my flight back on Tuesday so
+stay tuned for that.</p>
+
+<p>Cheers!</p>
+
+
+
+    </article>
+    <span class="print-footer">GSoC 2017 Postmortem Part 1: Overview - November 2, 2017 - Maximilian Scholz</span>
+    <footer>
+  <hr class="slender">
+  <ul class="footer-links">
+    
+      <li>
+        <a href="//www.twitter.com/scholzmx"><span class="icon-twitter"></span></a>
+      </li>
+    
+      <li>
+        <a href="//github.com/sims1253"><span class="icon-github"></span></a>
+      </li>
+    
+      <li>
+        <a href="//gitlab.com/sims1253"><span class="icon-gitlab"></span></a>
+      </li>
+    
+      <li>
+        <a href="/feed"><span class="icon-rss2"></span></a>
+      </li>
+    
+  </ul>
+<div class="credits">
+<span>&copy; 2021 &nbsp;&nbsp;MAXIMILIAN SCHOLZ</span></br> <br>
+<span>This site created with the <a href="//github.com/clayh53/tufte-jekyll">Tufte theme </a> in <a href="//jekyllrb.com">Jekyll</a>.</span>
+</div>
+</footer>
+
+  </body>
+</html>

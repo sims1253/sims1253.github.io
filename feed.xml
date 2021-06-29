@@ -1,31 +1,1353 @@
----
-layout: null
-nav_exclude: true
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>Maximilian Scholz</title>
+    <description></description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 29 Jun 2021 11:31:50 +0200</pubDate>
+    <lastBuildDate>Tue, 29 Jun 2021 11:31:50 +0200</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <title>Edge Cases</title>
+        <description>&lt;p&gt;Some edge cases and cautionary examples on using Markdown for writing content using this theme. In particular, list syntax can really knot things up.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;mathjax-improperly-parsing-greater-and-less-than-and-ampersands-inside-blocks&quot;&gt;Mathjax improperly parsing greater and less than and ampersands inside blocks&lt;/h3&gt;
+
+&lt;p&gt;The mathjax HTML &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; scripts have been modified to properly render block style mathjax expressions inside a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$ ... $$&lt;/code&gt; set of character pairs,
+using the standard Kramdown parser. Some examples sent to me by Quxiaofeng are now parsing correctly, I believe.&lt;/p&gt;
+
+&lt;p&gt;This code:&lt;/p&gt;
+
+&lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+  D &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\cdots&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;yields this:&lt;/p&gt;
+
+\[D = \left(\begin{matrix}
+  1 &amp;amp; -1 &amp;amp; &amp;amp; &amp;amp; &amp;amp; \\
+  &amp;amp;    &amp;amp; \cdots &amp;amp;   &amp;amp; \\
+  &amp;amp;    &amp;amp;        &amp;amp; 1 &amp;amp; -1
+\end{matrix}
+\right)\]
+
+&lt;p&gt;Other examples from the &lt;a href=&quot;http://latex.wikia.com/wiki/Matrix_environments&quot;&gt;wikia Tex reference&lt;/a&gt;:&lt;/p&gt;
+
+\[\begin{matrix}
+\alpha&amp;amp; \beta^{*}\\
+\gamma^{*}&amp;amp; \delta
+\end{matrix}\]
+
+\[\begin{bmatrix}
+\alpha&amp;amp; \beta^{*}\\
+\gamma^{*}&amp;amp; \delta
+\end{bmatrix}\]
+
+\[\begin{Bmatrix}
+\alpha&amp;amp; \beta^{*}\\
+\gamma^{*}&amp;amp; \delta
+\end{Bmatrix}\]
+
+\[\begin{vmatrix}
+\alpha&amp;amp; \beta^{*}\\
+\gamma^{*}&amp;amp; \delta
+\end{vmatrix}\]
+
+\[\begin{Vmatrix}
+\alpha&amp;amp; \beta^{*}\\
+\gamma^{*}&amp;amp; \delta
+\end{Vmatrix}\]
+
+\[\begin{Vmatrix}
+\alpha&amp;amp; \beta^{*}\\
+\gamma^{*}&amp;amp; \delta
+\end{Vmatrix}\]
+
+&lt;p&gt;However, a problem still exists for inline matrix notation, from an example &lt;a href=&quot;https://en.wikibooks.org/wiki/LaTeX/Mathematics#Matrices_in_running_text&quot;&gt;here&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;A matrix in text must be set smaller: \(\bigl(\begin{smallmatrix}a &amp;amp; b \\ c &amp;amp; d\end{smallmatrix} \bigr)\) to not increase leading in a portion of text. The way this inline matrix is written is: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$ \bigl(\begin{smallmatrix}a &amp;amp; b \\ c &amp;amp; d\end{smallmatrix} \bigr) $$&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;edge-case-1-from-quxiaofeng&quot;&gt;Edge Case 1 from Quxiaofeng:&lt;/h2&gt;
+
+&lt;h3 id=&quot;no-blank-lines-between-markdown-list-items&quot;&gt;No blank lines between Markdown list items&lt;/h3&gt;
+
+&lt;p&gt;The issue arises when sidenotes and marginnotes are put into list items.  As mentioned in the main documentation page, lists can be problematic not only for semantic clarity, but also because they can creating formatting issues. For example:&lt;/p&gt;
+
+&lt;h3 id=&quot;related-algorithms&quot;&gt;Related algorithms&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Split Bregman iteration &lt;label for=&quot;1&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;1&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Goldstein, T. and Osher, S. (2009). The split Bregman method for l1-regularized problems. SIAM J. Img. Sci., 2:323-343. &lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;Dykstra’s alternating projection algorithm &lt;label for=&quot;2&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Dykstra, R. L. (1983). An algorithm for restricted least squares regression. J. Amer. Statist. Assoc., 78(384):837-842. &lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;Proximal point algorithm applied to the dual&lt;/li&gt;
+  &lt;li&gt;Numerous applications in statistics and machine learning: lasso, gen. lasso, graphical lasso, (overlapping) group lasso, …&lt;/li&gt;
+  &lt;li&gt;Embraces distributed computing for big data &lt;label for=&quot;3&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;3&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Boyd, S., Parikh, N., Chu, E., Peleato, B., and Eckstein, J. (2011). Distributed optimization and statistical learning via the alternating direction method of multipliers. Found. Trends Mach. learn., 3(1):1-122. &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;why-this-matters&quot;&gt;Why this matters&lt;/h3&gt;
+
+&lt;p&gt;Notice how the sidenotes display properly, but the fact that sidenotes have more display ‘volume’ than the list items themselves causes a horizontal mismatch between the sidenote item’s number and its corresponding list item.&lt;/p&gt;
+
+&lt;p&gt;Please note that there must be &lt;em&gt;no blank lines between your list items&lt;/em&gt;. This is due to a really strange thing about the Jekyll Markdown engine I have never noticed before. If you have a list, and you put a blank line between the items like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  + list item 1
+
+  + list item 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It will create an html tag structure like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+   &amp;lt;li&amp;gt;
+      &amp;lt;p&amp;gt;list item 1&amp;lt;/p&amp;gt;
+  &amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;
+      &amp;lt;p&amp;gt;list item 2&amp;lt;/p&amp;gt;
+   &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Which &lt;em&gt;totally&lt;/em&gt; goofs up the layout CSS.&lt;/p&gt;
+
+&lt;p&gt;However, if your Markdown is this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    + list item 1
+    + list item 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It will create a tag structure like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+   &amp;lt;li&amp;gt;list item 1&amp;lt;/li&amp;gt;
+   &amp;lt;li&amp;gt;list item 2&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is the same content as above, with a blank line separating the list items. Notice how the sidenotes get squashed into the main content area:&lt;/p&gt;
+
+&lt;h3 id=&quot;remarks-on-admm-version-2---one-blank-line-between-markdown-list-items&quot;&gt;Remarks on ADMM version 2 - &lt;strong&gt;one blank line&lt;/strong&gt; between Markdown list items&lt;/h3&gt;
+
+&lt;p&gt;Related algorithms&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Split Bregman iteration &lt;label for=&quot;1&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;1&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Goldstein, T. and Osher, S. (2009). The split Bregman method for l1-regularized problems. SIAM J. Img. Sci., 2:323-343. &lt;/span&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Dykstra’s alternating projection algorithm &lt;label for=&quot;2&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Dykstra, R. L. (1983). An algorithm for restricted least squares regression. J. Amer. Statist. Assoc., 78(384):837-842. &lt;/span&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Proximal point algorithm applied to the dual&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Numerous applications in statistics and machine learning: lasso, gen. lasso, graphical lasso, (overlapping) group lasso, …
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;liquid-tag-parsing-strangeness&quot;&gt;Liquid tag parsing strangeness&lt;/h3&gt;
+
+&lt;p&gt;Example of the proper way to write an url inside a &lt;em&gt;Liquid&lt;/em&gt; full-width image tag.&lt;/p&gt;
+
+&lt;p&gt;This code: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% fullwidth &quot;assets/img/rhino.png&quot; &quot;Tuftes pet rhino (via &amp;lt;a href=\&quot;//www.edwardtufte.com/tufte/\&quot;&amp;gt;Edward Tufte&amp;lt;/a&amp;gt;)&quot;  %}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;produces the following image with a title. Notice that I have had to escape the double quotes in the HTML with a backslash. Also, the example above leaves out the single quote in ‘Tufte’s” because of the topsy-turvy way that you have to escape the escapes in code sections that are used for illustrative purposes in this text. Bottom line is that there are occasionally some odd interactions between the Markdown parser, custom &lt;em&gt;Liquid&lt;/em&gt; tags and HTML.&lt;/p&gt;
+&lt;figure class=&quot;fullwidth&quot;&gt;&lt;img src=&quot;/assets/img/rhino.png&quot; /&gt;&lt;figcaption&gt;Tufte&amp;#8217;s pet rhino (via &lt;a href=&quot;//www.edwardtufte.com/tufte/&quot;&gt;Edward Tufte&lt;/a&gt;)&lt;/figcaption&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 13 Apr 2020 19:04:01 +0200</pubDate>
+        <link>/articles/20/Edge-Cases</link>
+        <guid isPermaLink="true">/articles/20/Edge-Cases</guid>
+        
+        
+        <category>post</category>
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Tufte-style Jekyll blog</title>
+        <description>&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;The Tufte Jekyll theme&lt;/span&gt;  is an attempt to create a website design with the look and feel of Edward Tufte’s books and handouts. Tufte’s style is known for its extensive use of sidenotes, tight integration of graphics with text, and well-set typography.&lt;!--more--&gt; The idea for this project is essentially cribbed wholesale from Tufte and R Markdown’s Tufte Handout format&lt;label for=&quot;One&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;One&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;See &lt;a href=&quot;https://tufte-latex.github.io/tufte-latex/&quot;&gt;tufte-latex.github.io/tufte-latex/&lt;/a&gt; and &lt;a href=&quot;http://rmarkdown.rstudio.com/tufte_handout_format.html&quot;&gt;rmarkdown.rstudio.com/tufte_handout_format&lt;/a&gt; &lt;/span&gt; This page is an adaptation of the &lt;a href=&quot;http://rmarkdown.rstudio.com/examples/tufte-handout.pdf&quot;&gt;Tufte Handout PDF&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll-customizations&quot;&gt;Jekyll customizations&lt;/h2&gt;
+
+&lt;p&gt;This Jekyll blog theme is based on the github repository by Edward Tufte &lt;a href=&quot;https://github.com/edwardtufte/tufte-css&quot;&gt;here&lt;/a&gt;, which was orginally created by Dave Leipmann, but is now labeled under Edward Tufte’s moniker. I borrowed freely from the Tufte-CSS repo and have transformed many of the typographic and page-structural features into a set of custom Liquid tags that make creating content using this style much easier than writing straight HTML. Essentially, if you know markdown, and mix in a few custom Liquid tags, you can be creating a website with this document style in short order.&lt;/p&gt;
+
+&lt;p&gt;The remainder of this sample post is a self-documenting survey of the features of the Tufte-Jekyll theme. I have taken almost all of the sample content from the &lt;a href=&quot;https://github.com/edwardtufte/tufte-css&quot;&gt;Tufte-css&lt;/a&gt; repo and embedded it here to illustrate the parity in appearence between the two. The additional verbiage and commentary I have added is to document the custom &lt;em&gt;Liquid&lt;/em&gt; markup tags and other features that are bundled with this theme.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-sass-settings-file&quot;&gt;The SASS settings file&lt;/h3&gt;
+
+&lt;p&gt;I have taken much of the actual &lt;em&gt;Tufte-css&lt;/em&gt; files and modified them as necessary to accomodate the needs inherent in creating a Jekyll theme that has additional writing aids such as the Liquid tags. I have also turned the CSS file into a &lt;a href=&quot;http://sass-lang.com&quot;&gt;SASS&lt;/a&gt; file (the .scss type).  This means that you can alter things like font choices, text color, background color, and underlining style by changing values in this file. When the Jekyll site is built using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt; the settings in this file will be compiled into the customized CSS file that the site uses.&lt;/p&gt;
+
+&lt;p&gt;This file looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/* This file contains all the constants for colors and font styles */
+
+$body-font:   ETBembo, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, serif;
+// Note that Gill Sans is the top of the stack and corresponds to what is used in Tufte&apos;s books
+// However, it is not a free font, so if it is not present on the computer that is viewing the webpage
+// The free Google &apos;Lato&apos; font is used instead. It is similar.
+$sans-font:  &quot;Gill Sans&quot;, &quot;Gill Sans MT&quot;, &quot;Lato&quot;, Calibri, sans-serif;
+$code-font: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;
+$url-font: &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, Monaco, &quot;Bitstream Vera Sans Mono&quot;, monospace;
+$text-color: #111;
+$bg-color: #fffff8;
+$contrast-color: #a00000;
+$border-color: #333333;
+$link-style: color; // choices are &apos;color&apos; or &apos;underline&apos;. Default is color using $contrast-color set above
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Any of these values can be changed in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_sass/_settings.scss&lt;/code&gt; file before the site is built. The default values are the ones from &lt;em&gt;tufte-css&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;fundamentals&quot;&gt;Fundamentals&lt;/h2&gt;
+
+&lt;h3 id=&quot;color&quot;&gt;Color&lt;/h3&gt;
+
+&lt;p&gt;Although paper handouts obviously have a pure white background, the web is better served by the use of slightly off-white and off-black colors. I picked &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#fffff8&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#111111&lt;/code&gt; because they are nearly indistinguishable from their ‘pure’ cousins, but dial down the harsh contrast. Tufte’s books are a study in spare, minimalist design. In his book &lt;a href=&quot;http://www.edwardtufte.com/tufte/books_vdqi&quot;&gt;The Visual Display of Quantitative Information&lt;/a&gt;, he uses a red ink to add some visual punctuation to the buff colored paper and dark ink. In that spirit, links are styled using a similar red color.&lt;/p&gt;
+
+&lt;h3 id=&quot;headings&quot;&gt;Headings&lt;/h3&gt;
+
+&lt;p&gt;Tufte CSS uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; for the document title, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt; with class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;code&lt;/code&gt; for the document subtitle, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h2&amp;gt;&lt;/code&gt; for section headings, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h3&amp;gt;&lt;/code&gt; for low-level headings. More specific headings are not encouraged. If you feel the urge to reach for a heading of level 4 or greater, consider redesigning your document:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[It is] notable that the Feynman lectures (3 volumes) write about all of physics in 1800 pages, using only 2 levels of hierarchical headings: chapters and A-level heads in the text. It also uses the methodology of &lt;em&gt;sentences&lt;/em&gt; which then cumulate sequentially into &lt;em&gt;paragraphs&lt;/em&gt;, rather than the grunts of bullet points. Undergraduate Caltech physics is very complicated material, but it didn’t require an elaborate hierarchy to organize.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;cite&gt;&lt;a href=&quot;http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0000hB&quot;&gt;http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0000hB&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+
+&lt;p&gt;As a bonus, this excerpt regarding the use of headings provides an example of using block quotes. Markdown does not have a native &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;cite&amp;gt;&lt;/code&gt; shorthand, but real html can be sprinkled in with the Markdown text. In the previous example, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;cite&amp;gt;&lt;/code&gt; was preceded with a single return after the quotation itself. The previous blockquote was written in Markdown thusly:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Liquid&quot;&gt;[It is] notable that the Feynman lectures (3 volumes) write about all of physics in 1800 pages, using only 2 levels of hierarchical headings: chapters and A-level heads in the text. It also uses the methodology of *sentences* which then cumulate sequentially into *paragraphs*, rather than the grunts of bullet points. Undergraduate Caltech physics is very complicated material, but it didn’t require an elaborate hierarchy to organize.
+&amp;lt;cite&amp;gt;[http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0000hB](http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0000hB)&amp;lt;/cite&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;In his later books&lt;/span&gt; &lt;label for=&quot;two&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;two&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;&lt;a href=&quot;http://www.edwardtufte.com/tufte/books_be&quot;&gt;http://www.edwardtufte.com/tufte/books_be&lt;/a&gt; &lt;/span&gt;, Tufte starts each section with a bit of vertical space, a non-indented paragraph, and sets the first few words of the sentence in small caps. To accomplish this using this style, enclose the sentence fragment you want styled with small caps in a custom Liquid tag called ‘newthought’ like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Liquid&quot;&gt;{% newthought &apos;In his later books&apos; %}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;text&quot;&gt;Text&lt;/h3&gt;
+
+&lt;p&gt;In print, Tufte uses the proprietary Monotype Bembo&lt;label for=&quot;3&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;3&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;See Tufte’s comment in the &lt;a href=&quot;http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0000Vt&quot;&gt;Tufte book fonts&lt;/a&gt; thread. &lt;/span&gt; font. A similar effect is achieved in digital formats with the now open-source ETBembo, which Tufte-Jekyll supplies with a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@font-face&lt;/code&gt; reference to a .ttf file. Thanks to &lt;a href=&quot;https://github.com/daveliepmann/tufte-css/commit/0a810a7d5f4707941c6f9fe99a53ec41f50a5c00&quot;&gt;Linjie Ding&lt;/a&gt;, italicized text uses the ETBembo Italic font instead of mechanically skewing the characters. In case ETBembo somehow doesn’t work, Tufte CSS degrades gracefully to other serif fonts like Palatino and Georgia. Notice that Tufte CSS includes separate font files for &lt;strong&gt;bold&lt;/strong&gt; (strong) and &lt;em&gt;italic&lt;/em&gt; (emphasis), instead of relying on the browser to mechanically transform the text. This is typographic best practice. It’s also really important. Thus concludes my unnecessary use of em and strong for the purpose of example.&lt;/p&gt;
+
+&lt;p&gt;Code snippets ape GitHub’s font selection using Microsoft’s &lt;a href=&quot;http://www.microsoft.com/typography/ClearTypeFonts.mspx&quot;&gt;&lt;em&gt;Consolas&lt;/em&gt;&lt;/a&gt; and the sans-serif font uses Tufte’s choice of Gill Sans. Since this is not a free font, and some systems will not have it installed, the free google font &lt;a href=&quot;https://www.google.com/fonts/specimen/Lato&quot;&gt;&lt;em&gt;Lato&lt;/em&gt;&lt;/a&gt; is designated as a fallback.&lt;/p&gt;
+
+&lt;h2 id=&quot;epigraphs&quot;&gt;Epigraphs&lt;/h2&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;The English language . . . becomes ugly and inaccurate because our thoughts are foolish, but the slovenliness of our language makes it easier for us to have foolish thoughts.&lt;/p&gt;&lt;footer&gt;George Orwell, &lt;cite&gt; &quot;Politics and the English Language&quot; &lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;For a successful technology, reality must take precedence over public relations, for Nature cannot be fooled.&lt;/p&gt;&lt;footer&gt;Richard P. Feynman, &lt;cite&gt; “What Do You Care What Other People Think?” &lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;If you’d like to introduce your page or a section of your page with some quotes, use epigraphs. The two examples above show how they are styled. Epigraph elements are modeled after chapter epigraphs in Tufte’s books (particularly &lt;em&gt;Beautiful Evidence&lt;/em&gt;). The &lt;a href=&quot;https://github.com/edwardtufte/tufte-css&quot;&gt;Tufte-css&lt;/a&gt; gitub repository has detailed instructions on how to achieve this using HTML elements. As an easier alternative, the &lt;em&gt;Tufte-jekyll&lt;/em&gt; theme uses custom &lt;em&gt;Liquid tag&lt;/em&gt; pairs that allow the writer to embed elements such as epigraphs in the middle of the regular Markdown text being edited.&lt;/p&gt;
+
+&lt;p&gt;In order to use an epigraph in a page or section, type this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% epigraph &apos;text of citation&apos; &apos;author of citation&apos; &apos;citation source&apos;  %}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;to produce this:&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;I do not paint things, I paint only the differences between things.&lt;/p&gt;&lt;footer&gt;Henri Matisse, &lt;cite&gt;Henri Matisse Dessins: thèmes et variations, 1943&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt; &quot;How did you go bankrupt?&quot; Two ways. Gradually, then suddenly.&lt;/p&gt;&lt;footer&gt;Ernest Hemingway, &lt;cite&gt; &quot;The Sun Also Rises&quot; &lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;lists&quot;&gt;Lists&lt;/h3&gt;
+
+&lt;p&gt;Tufte points out that while lists have valid uses, they tend to promote ineffective writing habits due to their “lack of syntactic and intellectual discipline”. He is particularly critical of hierarchical and bullet-pointed lists. So before reaching for an HTML list element, ask yourself:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Does this list actually have to be represented using an HTML ul or ol element?&lt;/li&gt;
+  &lt;li&gt;Would my idea be better expressed as sentences in paragraphs?&lt;/li&gt;
+  &lt;li&gt;Is my message causally complex enough to warrant a flow diagram instead?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is but a small subset of a proper overview of the topic of lists in communication. A better way to understand Tufte’s thoughts on lists would be to read “The Cognitive Style of PowerPoint: Pitching Out Corrupts Within,” a chapter in Tufte’s book &lt;em&gt;Beautiful Evidence&lt;/em&gt;, excerpted at some length by Tufte himself &lt;a href=&quot;http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0002QF&quot;&gt;on his website&lt;/a&gt;. The whole piece is information-dense and therefore difficult to summarize. He speaks to web design specifically, but in terms of examples and principles rather than as a set of simple do-this, don’t-do-that prescriptions. It is well worth reading in full for that reason alone.&lt;/p&gt;
+
+&lt;p&gt;For these reasons, Tufte CSS encourages caution before reaching for a list element, and by default removes the bullet points from unordered lists.&lt;/p&gt;
+
+&lt;h2 id=&quot;figures&quot;&gt;Figures&lt;/h2&gt;
+
+&lt;h3 id=&quot;margin-figures&quot;&gt;Margin Figures&lt;/h3&gt;
+
+&lt;p&gt;&lt;label for=&quot;mf-id-1&quot; class=&quot;margin-toggle&quot;&gt;⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mf-id-1&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;&lt;img class=&quot;fullwidth&quot; src=&quot;/assets/img/rhino.png&quot; /&gt;&lt;br /&gt;F.J. Cole, “The History of Albrecht Dürer’s Rhinoceros in Zoological Literature,” &lt;em&gt;Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice&lt;/em&gt; (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte’s &lt;em&gt;Visual Explanations&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Images and graphics play an integral role in Tufte’s work. To place figures in the margin, use the custom margin figure liquid tag included in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_plugins&lt;/code&gt; directory like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% marginfigure &apos;mf-id-whatever&apos; &apos;assets/img/rhino.png&apos; &apos;F.J. Cole, “The History of Albrecht Dürer’s Rhinoceros in Zoological Literature,” *Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice* (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte’s *Visual Explanations*.&apos;  %}&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note that this tag has &lt;em&gt;three&lt;/em&gt; parameters. The first is an arbitrary id. This parameter can be named anything as long as it is unique to this post. The second parameter is the path to the image. And the final parameter is whatever caption you want to be displayed with the figure.  All parameters &lt;em&gt;must&lt;/em&gt; be enclosed in quotes for this simple liquid tag to work!&lt;/p&gt;
+
+&lt;p&gt;In this example, the &lt;em&gt;Liquid&lt;/em&gt; marginfigure tag was inserted &lt;em&gt;before&lt;/em&gt; the paragraph so that it aligns with the beginning of the paragraph. On small screens, the image will collapse into a small symbol: &lt;span class=&quot;contrast &quot;&gt;⊕&lt;/span&gt; at the location it has been inserted in the manuscript. Clicking on it will open the image.&lt;/p&gt;
+
+&lt;h3 id=&quot;full-width-figures&quot;&gt;Full Width Figures&lt;/h3&gt;
+
+&lt;p&gt;If you need a full-width image or figure, another custom liquid tag is available to use. Oddly enough, it is named ‘fullwidth’, and this markup:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% fullwidth &apos;assets/img/napoleons-march.png&apos; &apos;Napoleon&apos;s March *(Edward Tufte’s English translation)*&apos;  %}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yields this:&lt;/p&gt;
+
+&lt;figure class=&quot;fullwidth&quot;&gt;&lt;img src=&quot;/assets/img/napoleons-march.png&quot; /&gt;&lt;figcaption&gt;Napoleon’s March &lt;em&gt;(Edward Tufte’s English translation)&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;main-column-figures&quot;&gt;Main Column Figures&lt;/h3&gt;
+
+&lt;p&gt;Besides margin and full width figures, you can of course also include figures constrained to the main column. Yes, you guessed it, a custom liquid tag rides to the rescue once again:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% maincolumn &apos;assets/img/export-imports.png&apos; &apos;From Edward Tufte, *Visual Display of Quantitative Information*, page 92&apos;  %}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;yields this:&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/assets/img/exports-imports.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;From Edward Tufte, &lt;em&gt;Visual Display of Quantitative Information&lt;/em&gt;, page 92&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;sidenotes-and-margin-notes&quot;&gt;Sidenotes and Margin notes&lt;/h2&gt;
+
+&lt;p&gt;One of the most prominent and distinctive features of Tufte’s style is the extensive use of sidenotes and margin notes. Perhaps you have noticed their use in this document already. You are very astute.&lt;/p&gt;
+
+&lt;p&gt;There is a wide margin to provide ample room for sidenotes and small figures. There exists a slight semantic distinction between &lt;em&gt;sidenotes&lt;/em&gt; and &lt;em&gt;marginnotes&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;sidenotes&quot;&gt;Sidenotes&lt;/h3&gt;
+
+&lt;p&gt;Sidenotes&lt;label for=&quot;sn-id-whatever&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sn-id-whatever&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;This is a sidenote and &lt;em&gt;displays a superscript&lt;/em&gt; &lt;/span&gt; display a superscript. The &lt;em&gt;sidenote&lt;/em&gt; Liquid tag contains two components. The first is an identifier allowing the sidenote to be targeted by the twitchy index fingers of mobile device users so that all the yummy sidenote goodness is revealed when the superscript is tapped. The second components is the actual content of the sidenote. Both of these components should be enclosed in single quotes. Note that we are using the CSS ‘counter’ trick to automagically keep track of the number sequence on each page or post. On small screens, the sidenotes disappear and when the superscript is clicked, a side note will open below the content, which can then be closed with a similar click. Here is the markup for the sidenote at the beginning of this paragraph:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% sidenote &apos;sn-id-whatever&apos; &apos;This is a sidenote and *displays a superscript*&apos;%}&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;margin-notes&quot;&gt;Margin notes&lt;/h3&gt;
+
+&lt;p&gt;Margin notes&lt;label for=&quot;mn-id-whatever&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mn-id-whatever&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;This is a margin note &lt;em&gt;without&lt;/em&gt; a superscript &lt;/span&gt; are similar to sidenotes, but do not display a superscript. The &lt;em&gt;marginnnote&lt;/em&gt; Liquid tags has the same two components as the &lt;em&gt;sidenote&lt;/em&gt; tag. Anything can be placed in a margin note. Well, anything that is an inline element. Block level elements can make the Kramdown parser do strange things. On small screens, the margin notes disappear and this symbol: &lt;span class=&quot;contrast &quot;&gt;⊕&lt;/span&gt; pops up. When clicked, it will open the margin note below the content, which can then be closed with a similar click. The Markdown content has a similar sort of markup as a sidenote, but without a number involved:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% marginnote &apos;mn-id-whatever&apos; &apos;This is a margin note *without* a superscript&apos; %}&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;equations&quot;&gt;Equations&lt;/h2&gt;
+
+&lt;p&gt;The Markdown parser being used by this Jekyll theme is Kramdown, which contains some built-in &lt;a href=&quot;//www.mathjax.org&quot;&gt;Mathjax&lt;/a&gt; support. Both inline and block-level mathematical figures can be added to the content.&lt;/p&gt;
+
+&lt;p&gt;For instance, the following inline sequence:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;is written by enclosing a Mathjax expression within &lt;em&gt;a matching pair of double dollar signs: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt;&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;When $$ a \ne 0 $$, there are two solutions to $$ ax^2 + bx + c = 0 $$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Similarly, this block-level Mathjax expression:&lt;/p&gt;
+
+\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
+
+&lt;p&gt;is written by enclosing the expression within a pair of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt; with an empty line above and below:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can get pretty fancy, for instance, the wave equation’s nabla is no big thing:&lt;/p&gt;
+
+\[\frac{\partial^2 y}{\partial t^2}= c^2\nabla^2u\]
+
+&lt;p&gt;All of the standard &lt;span class=&quot;latex&quot;&gt;L&lt;sup&gt;a&lt;/sup&gt;T&lt;sub&gt;e&lt;/sub&gt;X&lt;/span&gt; equation markup is available to use inside these block tags.&lt;/p&gt;
+
+&lt;p&gt;Please note that the block-level Mathjax expressions &lt;em&gt;must&lt;/em&gt; be on their own line, separated from content above and below the block by a blank line for the Kramdown parser and the Mathjax javascript to play nicely with one another.&lt;/p&gt;
+
+&lt;p&gt;The Mathjax integration is tricky, and some things such as the inline matrix notation simply do not work well unless allowances are made for using the notation for a small matrix. Bottom line: If you are using this to document mathematics, be super careful to isolate your &lt;span class=&quot;latex&quot;&gt;L&lt;sup&gt;a&lt;/sup&gt;T&lt;sub&gt;e&lt;/sub&gt;X&lt;/span&gt; blocks by blank lines!&lt;/p&gt;
+
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+
+&lt;p&gt;Tables are, frankly,  a pain in the ass to create. That said, they often are one of the best methods for presenting data. Tabular data are normally presented with right-aligned numbers, left-aligned text, and minimal grid lines.&lt;/p&gt;
+
+&lt;p&gt;Note that when writing Jekyll Markdown content, there will often be a need to get some dirt under your fingernails and stoop to writing a little honest-to-god html. Yes, all that hideous &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;table&amp;gt;..&amp;lt;thead&amp;gt;..&amp;lt;th&amp;gt;&lt;/code&gt; nonsense. &lt;em&gt;And&lt;/em&gt; you must wrap the unholy mess in a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;table-wrapper&quot;&amp;gt;&lt;/code&gt; tag to ensure that the table stays centered in the main content column.&lt;/p&gt;
+
+&lt;p&gt;Tables are designed with an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overflow:scroll&lt;/code&gt; property to create slider bars when the viewport is narrow. This is so that you do not collapse all your beautiful data into a jumble of letters and numbers when you view it on your smartphone.&lt;/p&gt;
+
+&lt;p&gt;&lt;label for=&quot;table-1-id&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;table-1-id&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;&lt;em&gt;Table 1&lt;/em&gt;: A table with default style formatting &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;table-wrapper&quot;&gt;
+  &lt;table class=&quot;table-alpha&quot; id=&quot;newspaper-tone&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th class=&quot;left&quot;&gt;Content and tone of front-page articles in 94 U.S. newspapers, October and November, 1974&lt;/th&gt;
+        &lt;th class=&quot;left&quot;&gt;Number of articles&lt;/th&gt;
+        &lt;th&gt;Percent of articles with negative criticism of specific person or policy&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Watergate: defendants and prosecutors, Ford’s pardon of Nixon&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;537&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;49%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Inflation, high cost of living&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;415&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;28%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Government competence: costs, quality, salaries of public employees&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;322&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;30%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Confidence in government: power of special interests, trust in political leaders, dishonesty in politics&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;266&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;52%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Government power: regulation of business, secrecy, control of CIA and FBI&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;154&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;42%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Crime&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;123&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number r&quot;&gt;30%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Race&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;103&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;25%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Unemployment&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;100&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;13%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;text&quot;&gt;Shortages: energy, food&lt;/td&gt;
+        &lt;td&gt;&lt;div class=&quot;number&quot;&gt;68&lt;/div&gt;&lt;/td&gt;
+        &lt;td class=&quot;c&quot;&gt;&lt;div class=&quot;number&quot;&gt;16%&lt;/div&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is not the One True Table. Such a style does not exist. One must craft each data table with custom care to the narrative one is telling with that specific data. So take this not as “the table style to use”, but rather as “a table style to start from”. From here, use principles to guide you: avoid chartjunk, optimize the data-ink ratio (“within reason”, as Tufte says), and “mobilize every graphical element, perhaps several times over, to show the data.&lt;label for=&quot;table-id&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;table-id&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Page 139, &lt;em&gt;The Visual Display of Quantitative Information&lt;/em&gt;, Edward Tufte 2001. &lt;/span&gt; Furthermore, one must know when to reach for more complex data presentation tools, like a custom graphic or a JavaScript charting library.&lt;/p&gt;
+
+&lt;p&gt;As an example of alternative table styles, academic publications written in &lt;span class=&quot;latex&quot;&gt;L&lt;sup&gt;a&lt;/sup&gt;T&lt;sub&gt;e&lt;/sub&gt;X&lt;/span&gt; often rely on the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;booktabs&lt;/code&gt; package to produce clean, clear tables. Similar results can be achieved in Tufte CSS with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;booktabs&lt;/code&gt; class, as demonstrated in this table:&lt;/p&gt;
+
+&lt;p&gt;&lt;label for=&quot;table-2-id&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;table-2-id&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;&lt;em&gt;Table 2&lt;/em&gt;: A table with booktabs style formatting &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;table-wrapper&quot;&gt;
+&lt;table class=&quot;booktabs&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;&lt;th colspan=&quot;2&quot; class=&quot;cmid&quot;&gt;Items&lt;/th&gt;&lt;th class=&quot;nocmid&quot;&gt;&lt;/th&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;th class=&quot;l&quot;&gt;Animal&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;th class=&quot;r&quot;&gt;Price ($)&lt;/th&gt;&lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;&lt;td&gt;Gnat&lt;/td&gt;     &lt;td&gt;per gram&lt;/td&gt;&lt;td class=&quot;r&quot;&gt;13.65&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;&lt;/td&gt;         &lt;td&gt;each&lt;/td&gt;    &lt;td class=&quot;r&quot;&gt;0.01&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Gnu&lt;/td&gt;      &lt;td&gt;stuffed&lt;/td&gt; &lt;td class=&quot;r&quot;&gt;92.50&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Emu&lt;/td&gt;      &lt;td&gt;stuffed&lt;/td&gt; &lt;td class=&quot;r&quot;&gt;33.33&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Armadillo&lt;/td&gt;&lt;td&gt;frozen&lt;/td&gt;  &lt;td class=&quot;r&quot;&gt;8.99&lt;/td&gt;&lt;/tr&gt;
+          &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The table above was written in HTML as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div class=&quot;table-wrapper&quot;&amp;gt;
+&amp;lt;table class=&quot;booktabs&quot;&amp;gt;
+          &amp;lt;thead&amp;gt;
+            &amp;lt;tr&amp;gt;&amp;lt;th colspan=&quot;2&quot; class=&quot;cmid&quot;&amp;gt;Items&amp;lt;/th&amp;gt;&amp;lt;th class=&quot;nocmid&quot;&amp;gt;&amp;lt;/th&amp;gt;&amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;&amp;lt;th class=&quot;l&quot;&amp;gt;Animal&amp;lt;/th&amp;gt;&amp;lt;th&amp;gt;Description&amp;lt;/th class=&quot;r&quot;&amp;gt;&amp;lt;th&amp;gt;Price ($)&amp;lt;/th&amp;gt;&amp;lt;/tr&amp;gt;
+          &amp;lt;/thead&amp;gt;
+          &amp;lt;tbody&amp;gt;
+            &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;Gnat&amp;lt;/td&amp;gt;     &amp;lt;td&amp;gt;per gram&amp;lt;/td&amp;gt;&amp;lt;td class=&quot;r&quot;&amp;gt;13.65&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;         &amp;lt;td&amp;gt;each&amp;lt;/td&amp;gt;    &amp;lt;td class=&quot;r&quot;&amp;gt;0.01&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;Gnu&amp;lt;/td&amp;gt;      &amp;lt;td&amp;gt;stuffed&amp;lt;/td&amp;gt; &amp;lt;td class=&quot;r&quot;&amp;gt;92.50&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;Emu&amp;lt;/td&amp;gt;      &amp;lt;td&amp;gt;stuffed&amp;lt;/td&amp;gt; &amp;lt;td class=&quot;r&quot;&amp;gt;33.33&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;Armadillo&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;frozen&amp;lt;/td&amp;gt;  &amp;lt;td class=&quot;r&quot;&amp;gt;8.99&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+          &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;I like this style of table,&lt;/span&gt;   so I have made it the default for unstyled tables. This allows use of the &lt;a href=&quot;https://michelf.ca/projects/php-markdown/extra/&quot;&gt;&lt;em&gt;Markdown Extra&lt;/em&gt;&lt;/a&gt; features built into the &lt;a href=&quot;http://kramdown.gettalong.org/parser/kramdown.html&quot;&gt;&lt;em&gt;Kramdown&lt;/em&gt;&lt;/a&gt; parser. Here is a table created using the Markdown Extra table syntax to make a nice table which has the side benefit of being human readable in the raw Markdown file:&lt;/p&gt;
+
+&lt;p&gt;&lt;label for=&quot;tableID-3&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;tableID-3&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Table 3: a table created with &lt;em&gt;Markdown Extra&lt;/em&gt; markup using only the default table styling &lt;/span&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;mpg&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;cyl&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;disp&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;hp&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;drat&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;wt&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Mazda RX4&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;21&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;160&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;110&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.90&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.62&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Mazda RX4 Wag&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;21&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;160&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;110&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.90&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.88&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Datsun 710&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;22.8&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;108&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;93&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.85&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.32&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Hornet 4 Drive&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;21.4&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;258&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;110&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.08&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.21&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Hornet Sportabout&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;18.7&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;360&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;175&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.15&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.44&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Valiant&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;18.1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;160&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;105&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2.76&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3.46&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Using the following Markdown formatting:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|                 |mpg  | cyl  |  disp  |   hp   |  drat  | wt  |
+|:----------------|----:|-----:|-------:|-------:|-------:|----:|
+|Mazda RX4        |21   |6     |160     |110     |3.90    |2.62 |
+|Mazda RX4 Wag    |21   |6     |160     |110     |3.90    |2.88 |
+|Datsun 710       |22.8 |4     |108     |93      |3.85    |2.32 |
+etc...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The following is a more simple table, showing the Markdown-style table markup. Remember to label the table with a &lt;em&gt;marginnote&lt;/em&gt; Liquid tag, and you &lt;em&gt;must&lt;/em&gt; separate the label from the table with a single blank line. This markup:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% marginnote &apos;Table-ID4&apos; &apos;Table 4: a simple table showing left, center, and right alignment of table headings and data&apos;  %}
+
+|**Left** |**Center**|**Right**|
+|:--------|:--------:|--------:|
+ Aardvarks|         1|$3.50
+       Cat|   5      |$4.23
+  Dogs    |3         |$5.29
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Yields this table:&lt;/p&gt;
+
+&lt;p&gt;&lt;label for=&quot;Table-ID4&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;Table-ID4&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Table 4: a simple table showing left, center, and right alignment of table headings and data &lt;/span&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Left&lt;/strong&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Center&lt;/strong&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;&lt;strong&gt;Right&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Aardvarks&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$3.50&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cat&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$4.23&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Dogs&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$5.29&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;Code samples use a monospace font using the ‘code’ class. The Kramdown parser has the ‘GFM’ option enabled, which stands for ‘Github Flavored Markdown’, and this means that both inline code such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#include &amp;lt;stdio.h&amp;gt;&lt;/code&gt; and blocks of code can be delimited by surrounding them with 3 backticks:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(map tufte-style all-the-things)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;is created by the following markup:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```(map tufte-style all-the-things)```&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To get the code highlighted in the language of your choice like so:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RenderFullWidthTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Tag&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;shellwords&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;shellsplit&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;div&amp;gt;&amp;lt;img class=&apos;fullwidth&apos; src=&apos;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&apos;/&amp;gt;&amp;lt;/div&amp;gt; &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;p&amp;gt;&amp;lt;span class=&apos;marginnote&apos;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;register_tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;fullwidth&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RenderFullWidthTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Enclose the code block in three backticks, followed by a space and then the language name, like this:&lt;/p&gt;
+
+&lt;pre&gt; &lt;code&gt;``` ruby
+    module Jekyll
+    blah, blah...
+   ```&lt;/code&gt; &lt;/pre&gt;
+
+</description>
+        <pubDate>Mon, 13 Apr 2020 11:46:04 +0200</pubDate>
+        <link>/articles/20/tufte-style-jekyll-blog</link>
+        <guid isPermaLink="true">/articles/20/tufte-style-jekyll-blog</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>css</category>
+        
+      </item>
+    
+      <item>
+        <title>GSoC 2017 Postmortem Part 2: Org Application</title>
+        <description>&lt;p&gt;In the beginning, there was an organization application.
+And with it, the need for someone responsible.
+That one was me.
+&lt;!--more--&gt;
+I always wanted to help with GSoC but felt that my coding skills and
+codebase knowledge were not good enough to be a mentor as good as
+I’d like to be.
+So I followed the call for main admin and on the story went.&lt;/p&gt;
+
+&lt;h2 id=&quot;google-application-form&quot;&gt;Google Application Form&lt;/h2&gt;
+&lt;p&gt;The most obvious piece of the application process is the application
+form every organization has to fill on the GSoC page.
+The problems I encountered while drafting the first version of our org
+profile and “Ten Reasons Why You Should Take coala”-text were
+essentially the same as for every application I had ever written.
+How does one sell themselves without making things up.&lt;/p&gt;
+
+&lt;p&gt;Although coala had two years of GSoC experience, those were as a sub
+org under the PSF umbrella.
+This year should be the first under our own flag, so everything had to
+be perfect.
+Again and again I asked for feedback on my drafts and input on things
+where I didn’t know enough about. Both Lasse and John were very helpful,
+both with plenty more GSoC experience than I have.
+We felt that we were in a pretty good position.
+Our community has a strong connection with the GSoC program, many of our
+long time members were students once upon a time.
+We had a total of 10 students over the two years with PSF, and from
+what I have heard, they were more than pleased with our performance as
+an organization, both the students and the PSF.
+The only thing that we felt went against us was us being a novice
+independent org, and us not having failed any of our students so far.
+Yup, this is a thing.
+From what I understood, Google expects around 20% failure rate across
+all organizations.
+If an org deviates from that too much for too long, then they are either
+too strict with their students, not strict enough, or there is another
+problem with their process.
+We actually were quite worried about this point but from what I have
+learned, there is no real reason to worry about this.
+Document what you and your students are doing and as long as you have
+good reasons for the decisions you are making, everything should be
+fine in the end.
+About the novice part, there wasn’t really anything we could do besides
+pointing to our past GSoC experience and hoping that Terri Oda, a PSF
+GSoC admin, would vouch for us.&lt;/p&gt;
+
+&lt;h2 id=&quot;projects-page&quot;&gt;Projects Page&lt;/h2&gt;
+
+&lt;p&gt;Another, big, part of the application is the projects page.
+It is a list of project ideas that students can apply for.
+Although it is encouraged that students come up with their own project,
+most applications will come from the project list.
+And a nice project list is a must have, from what we were told, to get
+into GSoC.
+We felt that the project page should be the most well fleshed out part
+of our application, as it is actually useful during the following parts
+of the program and offers a lot of value to the students and us when
+the student application phase comes around.
+This lead to our web frontend hero Hemang building our new and awesome
+&lt;a href=&quot;https://projects.coala.io&quot;&gt;Project Page&lt;/a&gt;.
+Before this, we just used a GitHub wiki page with some project drafts
+but the new page was much easier to use, gave a better overview about
+the projects and it gives us the possibility to add features to it in
+the future.
+During this early phase, we included the old projects from the wiki and
+asked mentors and community members for other projects ideas they might
+be interested in mentoring.
+For those who haven’t read any of the project ideas on our page, the
+structure always is something like this:
+Introduction and motivation, sometimes followed by some additional
+information about how to solve the problem if we already had some idea
+about it.
+Then we show a time line following the GSoC 4 phase model, that holds
+some milestones and gives a rough idea about when to deliver the single
+parts.
+Finally, we link all additional information we have about the project,
+like issues or cEPs, add mentors as contact persons, and some more meta
+information.
+In addition to the project ideas the page also holds a faq section,
+where we started to collect questions we received again and again or
+just felt were important.
+We actually tried to let the student’s add the questions and answers
+to the faq themselves to include them into our process and also to make
+sure they actually understood our answer and thus to double check if
+our answer was good enough or if maybe we need a better explanation.
+We had close to twenty project idea drafts at this point and felt that
+we were more than ready to hand everything in to Google and be accepted.
+Before we move on to the next part, I want to point out that we also
+built the projects page so other orgs could use it and we have received
+some good feedback on it.&lt;/p&gt;
+
+&lt;h2 id=&quot;fossdem-and-feedback-from-stephanie&quot;&gt;FOSSDEM and Feedback from Stephanie&lt;/h2&gt;
+
+&lt;p&gt;In February, a few weeks before the application deadline, we went to
+FOSSDEM with coala.
+We had a stand where we promoted what we did but most important, our
+stand was right next to the GSoC stand.
+A great opportunity to get feedback and ask some questions we figured,
+and so I walked over in a calmer minute to show Stephanie what we had
+so far.
+Starting with the projects page, she liked it a lot.
+She liked the idea of it and how it was structured and could help to
+introduce students even easier.
+The only improvement she asked for with it were the project
+descriptions.
+Flesh out the motivation for most projects and just write a little more
+to make it easier for students was what I took away for the projects
+age.
+But overall this part gave me a very good feeling!&lt;/p&gt;
+
+&lt;p&gt;Then we talked about our chances to get into the program with the
+experience we had under our belt and our expectations and wishes for
+slots we would get.
+As I said before, we had 10 students over the last two seasons.
+First 2, then 8.
+We felt, that we could probably grow some more with the mentor power we
+had amassed but also didn’t expect too much as we had some challenges
+coming up, that we didn’t have the last two times.
+What I asked was probably something along the lines of “how high are
+our chances to get around 12 students this year with what I just showed
+you + improvements I’ll implement?”.
+And here is where the not-so-fun part started.
+She essentially looked at me as if I asked for a million dollars out of
+nowhere.
+Turns out, that first time organizations usually get 1 or 2 students.
+And even with our past experience as a sub org, we kind of counted as
+a first time org.
+I pointed out that we had 8 students under PSF last year and received
+great feedback from their admins for our work and Stephanie couldn’t
+believe that we did get such an enormous number of students as such a
+young org.
+I came out of that part of our conversation with the feeling that we’d
+probably not get more than 4 slots no matter what we did.
+Not a great takeaway.&lt;/p&gt;
+
+&lt;h2 id=&quot;implementing-feedback&quot;&gt;Implementing Feedback&lt;/h2&gt;
+&lt;p&gt;I rewrote a lot of our application texts to focus more on the things
+Stephanie pointed out as important factors after we returned but the
+main part of work I did was essentially rewriting all twenty something
+project proposals we had.
+Although I wrote some of them myself, most of them were actually written
+by students or mentors and I did all the review work.
+The reason or this was that even though I probably would have been
+faster just writing everything myself, I wouldn’t be able to get enough
+reviews to merge everything in time.
+So the solution was to poke students that were interested in the
+projects and mentors to rewrite it and me reviewing it.&lt;/p&gt;
+
+&lt;p&gt;During this time I also struggled with the expected slots we would get.
+While yes, we would finally be our own organization, with all the pros
+that would bring with it long term, it also felt like a step backwards
+to loose students slots compared to last year.
+But the fact that we couldn’t grow further under the PSF and had plans
+to act as an umbrella for smaller linter projects made the investment
+in our long term growth worth it in our eyes.
+I should probably add that we had more than 5 newcomers per week during
+this time that were interested in GSoC with us.
+This meant that the newcomers from one week might be more than we would
+get.
+And there were quite some students that came to us end of last year and
+had contributed a lot.
+Hard time deciding whom to take on the horizon already.&lt;/p&gt;
+
+&lt;p&gt;After completing the projects rewrite we called it done and handed
+everything in for the final time.
+Now all that was left was to wait and get to know the possible students.&lt;/p&gt;
+
+&lt;h2 id=&quot;result-day-slots-and-thoughts&quot;&gt;Result Day, Slots and Thoughts&lt;/h2&gt;
+&lt;p&gt;We were accepted.
+And although it doesn’t quite fit here chronologically, we received 10
+slots.
+We were happy when we were accepted and a huge weight left my shoulders.
+But the real joy came when we received those 10 slots.
+Apparently Terri gave us one hell of a recommendation and all the
+mentors we had collected and project ideas we had prepared were worth
+something after all.
+John, one of the other mentors, also met Stephanie at FOSSASIA and kind
+of implied that getting only two slots wouldn’t work for us so maybe
+that also helped.
+Regardless of how we did it, yeay for the slots!&lt;/p&gt;
+
+&lt;p&gt;So what do I think about how everything went down?
+I feel like the projects page was a great idea and will serve us (and
+maybe other orgs) well in the future.
+There are some downsides to it in my opinion that I will cover in the
+next part more in depth but the main thing is that all those super
+defined projects left the students with &lt;em&gt;nothing&lt;/em&gt; to think about in some
+cases.
+In the future, we will focus more on presenting the problem and why we’d
+like to fix it and less about the how to fix it in detail.
+This way we give students a chance to shine during their application
+phase by working on the specifics with the respective mentors and take
+some of the work off of us.&lt;/p&gt;
+
+&lt;p&gt;The part where we included students in writing the projects and faq
+entries on the other hand was great.
+It is definitely more work than just doing it yourself but it works as
+a first identifier for very good students.
+They will be happy to help defining projects, already starting to do
+research on it and discuss the details with possible mentors.
+Doing this in a more structured way will probably something we will try
+to do in future years.&lt;/p&gt;
+
+&lt;p&gt;About the meeting with Stephanie at FOSSDEM, I would recommend that to
+everyone!
+Stephanie is a lovely person and helped us a lot with her feedback I
+feel.
+She is also just nice to talk to :).&lt;/p&gt;
+
+&lt;p&gt;Overall I feel like this part of GSoC went pretty well and without real
+problems beside our panic of getting too few slots.
+Things won’t stay this rosy in the next phase sadly so if you want some
+drama and more interesting “things we could have done better” things,
+make sure to come back.
+I’m not sure when I will find the time to finish the next part as
+I have some university to catch up on and it takes me a good 2 hours to
+ write one of these, at least so far, but I’ll try to keep at least a
+weekly schedule for this series until I am done.&lt;/p&gt;
+
+&lt;p&gt;Thanks again to Terri Oda from the PSF and Stephanie Taylor from Google
+for your support during this phase that definitely helped us to get
+into GSoC and learn a lot as an org.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 13 Nov 2017 00:00:00 +0100</pubDate>
+        <link>/articles/17/gsoc-2017-postmortem-pt2</link>
+        <guid isPermaLink="true">/articles/17/gsoc-2017-postmortem-pt2</guid>
+        
+        <category>gsoc</category>
+        
+        
+        <category>coala</category>
+        
+      </item>
+    
+      <item>
+        <title>GSoC 2017 Postmortem Part 1: Overview</title>
+        <description>&lt;p&gt;The 2017 GSoC is over and it was awesome. We had 10 great students
+(Yes all of them!) and a tremendous experience for all of us.
+&lt;!--more--&gt;
+In this series I’ll try to reflect on how the summer went from the point
+of view of the main admin for coala.
+As I both feel that reading very long blog posts is hard and that I
+won’t be able to write everything down in one go, I will split this up
+in multiple parts.
+How many, I don’t know at this point.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-admin-role-gsoc-and-me&quot;&gt;The Admin Role, GSoC and Me&lt;/h2&gt;
+
+&lt;p&gt;To give some perspective to the things I write, here some background
+about what my role and background were:&lt;/p&gt;
+
+&lt;p&gt;My role in this year’s Google Summer of Code for coala was being the
+main org admin. This meant, that I (mainly) was responsible for
+everything coala should deliver during those months.
+I had two backup admins with @sils and @jayvdb, who both were very
+helpful.
+&lt;strong&gt;And I want to highlight that a lot of the time when I write “I” that
+is actually all three of us (and sometimes also mentors).&lt;/strong&gt;
+I just didn’t think about adding “me and all the lovely people that
+helped me” but it is what I mean most of the time.
+You can replace most “I”s and “me”s in this text with “we”.&lt;/p&gt;
+
+&lt;h3 id=&quot;org-application&quot;&gt;Org Application&lt;/h3&gt;
+&lt;p&gt;As an admin, my job is not to do everything myself, but to
+make sure everything gets done.
+And, if no one else will do it, then it becomes my job.
+This started with the org application to the program itself.
+Writing the application and reviewing what input others had given,
+gathering information from past years and recruiting mentors.
+During that phase we also met Stephanie Taylor at FOSSDEM and got some
+feedback on our application and our newly created
+&lt;a href=&quot;https://projects.coala.io/&quot;&gt;projects page&lt;/a&gt;.
+Again, I was responsible for all the feedback being implemented, not
+necessarily doing so myself.&lt;/p&gt;
+
+&lt;h3 id=&quot;student-application&quot;&gt;Student Application&lt;/h3&gt;
+&lt;p&gt;After coala was accepted into the program, the student application phase
+soon opened.
+During this phase, my main work consisted of figuring out how we should
+cope with the insane amount of applications we received, building a
+process that would somehow be able to handle them (hint: we kind of
+failed with this), review applications and support mentors and students
+on their way to getting to know each other and writing applications.
+I am pretty sure that this part will get it’s own post and will probably
+be the largest one of them all.
+We learned a lot in this area this year but it wasn’t without growing
+pains sadly.
+At the end of the student application phase came the time to choose
+which student’s we would accept.
+With the process we had in place this year, I had to collect feedback
+from the mentors, form my own opinion about the students and in the end
+make the decision, which students we wanted to accept.
+And finally during this phase my job was to listen to all those, whose
+dreams I crushed by not choosing them.&lt;/p&gt;
+
+&lt;h3 id=&quot;bonding-and-coding-phases&quot;&gt;Bonding and Coding Phases&lt;/h3&gt;
+&lt;p&gt;When the actual part of GSoC started, I could actually start to relax a
+little bit.
+Most of the work now lay in the hands of the students, mentors and
+co-mentors.
+During this time I answered a lot of “how are we handling this thing”
+questions from students and mentors.
+I usually sent one or two mails per phase to both students and mentors,
+describing what they had to do during the current phase and reminding
+them of any upcoming deadlines.
+If any questions or problems came up and I felt the answer might help
+the other participants, I also added those things.
+Finally, I did some checkups on mentors and students, just to make
+sure that there no hidden problems or friction between anyone we didn’t
+know about.&lt;/p&gt;
+
+&lt;h3 id=&quot;evaluations&quot;&gt;Evaluations&lt;/h3&gt;
+&lt;p&gt;The last part of GSoC (at least what I have in my head right now) were
+the evaluations.
+I will group them, as they essentially are the same every time in terms
+of what I had to do.
+I reminded the mentors in the phase starting mail that there would be
+evaluations and when our internal and when Google’ deadline was.
+Then I gave another reminder a few days before the evaluation opened,
+highlighting what mentors should focus on and some instructions about
+what those evaluations are for and about.
+During the evaluation phase I essentially just pinged every mentor that
+I felt might be running a little late and made sure that all evaluations
+were filled on time.
+In one case, by filling it myself.
+More about that when we arrive in that chapter.&lt;/p&gt;
+
+&lt;h3 id=&quot;compensation-and-other-money-things&quot;&gt;Compensation (and other money things)&lt;/h3&gt;
+&lt;p&gt;I think that it is important to be transparent, especially in an open
+source project like coala and when handling something where so many
+people have worked on as GSoC.
+This is why I’d like to at least mention, that I received compensation
+from coala for the admin work I did.
+1500€ to be precise.
+This was decided by a vote
+(&lt;a href=&quot;https://github.com/coala/cEPs/blob/master/cEP-0001.md&quot;&gt;c-level decision&lt;/a&gt;)
+by the coala maintainers and taken from the money coala as an
+organization received from Google.
+The amount was roughly estimated using the german (where I am from)
+minimum wage of 8.50€ and using 8h/week as the work hours.
+Make of this what you will.
+I just felt it noteworthy.&lt;/p&gt;
+
+&lt;p&gt;I guess I might use this as a final chapter to talk about the money we
+received, and what we plan on doing with it.
+And in that way also shine a light on the growing coala association&lt;/p&gt;
+
+&lt;p&gt;I will probably write the second part on my flight back on Tuesday so
+stay tuned for that.&lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 Nov 2017 00:00:00 +0100</pubDate>
+        <link>/articles/17/gsoc-2017-postmortem-pt1</link>
+        <guid isPermaLink="true">/articles/17/gsoc-2017-postmortem-pt1</guid>
+        
+        <category>gsoc</category>
+        
+        
+        <category>coala</category>
+        
+      </item>
+    
+      <item>
+        <title>April Community Team Update</title>
+        <description>&lt;p&gt;The last time you heard something from the community team was almost 3 month
+ago.
+Long long time ago…&lt;/p&gt;
+
+&lt;p&gt;So what have we been up to?
+And where were all those monthly updates?
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;gsoc-2017&quot;&gt;GSoC 2017&lt;/h2&gt;
+
+&lt;p&gt;So yea. coala is in. We are our own organization and might even serve as an
+umbrella for some smaller projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;How awesome is that!?!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We received 54 applications and the average quality is very high compared to
+what other orgs get.
+At least that is what I hear from admins and mentors.
+We have 22 Mentors and three admins, two of whom would also be willing to mentor
+students.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;79 people who would like to GSoC at coala. Wow!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I won’t mentor anyone as we feel like a designated admin with no student ties
+might be a good idea if any conflict come up.
+This also keeps me available as a backup mentor if everything else fails and
+generally let’s me keep eyes on the hoard with less distraction.&lt;/p&gt;
+
+&lt;h3 id=&quot;projects-page&quot;&gt;Projects Page&lt;/h3&gt;
+
+&lt;p&gt;So I talked about the project page in the first post.
+Go visit &lt;a href=&quot;https://projects.coala.io&quot;&gt;projects.coala.io&lt;/a&gt; and see for yourself.
+It is absolutely gorgeous.
+Again designed by Hemang and deployed by Kaisar (our dev - ops dream team,
+praise be, praise be).&lt;/p&gt;
+
+&lt;p&gt;After it was done, we had to fill it with projects.
+There was an old wiki page with rough idea outlines and as a starter, we mainly
+just copy-pasted the ideas over onto the new page.
+At FOSDEM we met Stephanie from Google and she really liked the page but told
+us, that the descriptions were meh for some projects.
+This lead to us rewriting ~20 project descriptions over two weeks.
+A lot of students that were already preparing for their applications helped with
+the new descriptions and reviews which probably helped them a lot with
+understanding the projects better.&lt;/p&gt;
+
+&lt;p&gt;Although we received a lot of positive feedback for the projects page, we might
+not do it as in depth the next time.
+Although it helped students to understand the projects better, we feel like it
+also makes it harder for them to distinguish themselves in through the
+applications.
+It is hard to come up with your own solutions if you have a set
+path laid out in front of you.
+This is something for us to keep in mind and I bet that there will be a lot more
+of these ideas in the resume post of GSoC that surely will come.&lt;/p&gt;
+
+&lt;h2 id=&quot;members-cep-and-updates-to-the-newcomer-guide&quot;&gt;Members cEP and Updates to the Newcomer Guide&lt;/h2&gt;
+
+&lt;p&gt;The rewrite is essentially done but blocked by the additions to the newcomer
+guide that need to happen.
+The main additions are rules about how to remove ranks/rights from members of
+the community.
+This is mainly needed due to the high number of inactive maintainers from our
+early days.
+I also clarified some of the thoughts and ideas behind the rights tied to the
+ranks, for example the idea that non code contributors could become maintainers.&lt;/p&gt;
+
+&lt;p&gt;The part that blocks the PR are the rules for becoming a developer.
+The newcomer guide is supposed to guide everyone to the point, where we consider
+them a part of our developing community no longer in the learning phase of
+basics.
+To make things easier, I combined this with a lot of changes I wanted to do to
+the guide and so the PR is now huge and will probably take another few weeks to
+get merged.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-the-silence&quot;&gt;Why the silence?&lt;/h2&gt;
+
+&lt;p&gt;Basically GSoC happened.&lt;/p&gt;
+
+&lt;p&gt;I totally underestimated the amount of time the GSoC preparation would ask from
+me.
+Not only in a productive “I have to review 20 PRs a day to get the project
+descriptions right” way, but also in the “Are we missing anything? Could we
+do something better” mind hogging kind of way.
+The preparation of GSoC just took all of my awareness hostage and so it almost
+became the sole thing I did over the last months.&lt;/p&gt;
+
+&lt;p&gt;This also led to most people from the community team being entangled in the
+preparation.
+Hemang and Kaisar basically were on standby 24/7 just waiting for us to ask for
+the next addition or fix we desperately needed before some deadline,
+Lasse was part of the never sleeping admin team, Mariatta is now
+a python core dev and Udayan is working and researching.
+Basically we were all either working on GSoC or something outside of coala.
+I feel like I should add, that they all worked on coala a lot more than
+I did during the last few month. Probably.&lt;/p&gt;
+
+&lt;p&gt;Essentially we all got eaten by GSoC and now that I have some breathing room
+again, I try to collect everyone to get rolling again.&lt;/p&gt;
+
+&lt;h2 id=&quot;outlook&quot;&gt;Outlook&lt;/h2&gt;
+
+&lt;p&gt;So what is coming up?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There will be a lot of GSoC work for sure.&lt;/li&gt;
+  &lt;li&gt;I just wrote the intro for our
+&lt;a href=&quot;http://blog.solyoution.io/coala/coala-call-for-chefs.html&quot;&gt;Call for Chefs&lt;/a&gt;
+cooking competition,
+that essentially was born over a ramen pep talk with Asnel half a year ago.&lt;/li&gt;
+  &lt;li&gt;I am updating our ideas page and will try to get more stuff into the works&lt;/li&gt;
+  &lt;li&gt;We held our first maintainer meeting today. The idea is quite old but
+we never came around doing it. I might write something about it as we want
+them to be public anyway but maybe I can get someone else to do it :).&lt;/li&gt;
+  &lt;li&gt;I will kick everyone to write more blog posts although I feel like we are
+improving on the consistency of our blog entries.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And I think that’s it from the top of my head.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 19 Apr 2017 00:00:00 +0200</pubDate>
+        <link>/articles/17/community-team-update</link>
+        <guid isPermaLink="true">/articles/17/community-team-update</guid>
+        
+        <category>community</category>
+        
+        
+        <category>coala</category>
+        
+      </item>
+    
+      <item>
+        <title>coala&apos;s Call for Chefs</title>
+        <description>&lt;p&gt;A story I like to tell to showcase the welcoming atmosphere at coala is one
+about ramen.
+Some time last year I was talking with &lt;a href=&quot;https://github.com/Asnelchristian&quot;&gt;Asnel&lt;/a&gt;
+about how to improve a bowl of instant ramen until you get a healthy (and also
+very tasty) meal.
+&lt;!--more--&gt;
+Because it was a rather quiet evening we did so in our main channel, when suddenly
+a wild newcomer appeared (I sadly don’t remember the name).
+While we helped him get started, we also continued our discussion on how adding
+some vegetables and a soft-boiled egg could make all the difference between a
+cheap snack and a fulfilling meal.&lt;/p&gt;
+
+&lt;p&gt;Later that evening, the newcomer just found their way into our offtopic channel,
+they voiced their amazement about how we, “the gods of programming, the wise
+elders of this awesome open source project” could discuss such profanities as
+upgrading your ramen game.
+Surely we had more important, ground breaking, work to do.
+I am pretty sure those weren’t the exact words but the idea was the same.
+Even more amazing, the newcomer was able to participate (who has never eaten a
+bowl of instant ramen?) and contribute.
+The newcomer loved the casual atmosphere and being included, who would have
+guessed.&lt;/p&gt;
+
+&lt;p&gt;This taught me some things.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;The welcoming culture in other open source projects must be horrible if such
+a simple thing would blow someone’s mind. From my point of view, we didn’t do
+anything impressive. We talked about food…&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A lot of people don’t know how to cook nice meals. Or even just how to get
+a little more out of your instant ramen.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Including newcomers in your offtopic fun is a way to help them get accustomed
+to the new environment they ventured into.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It was the last realization that made me embrace the “Secretary of Offtopic”
+title (which I gave to myself to be honest).
+Offtopic interaction seems to be something people love and it can connect
+complete strangers over something all sides know about.&lt;/p&gt;
+
+&lt;p&gt;In comes:&lt;/p&gt;
+
+&lt;h2 id=&quot;call-for-chefs&quot;&gt;Call for Chefs&lt;/h2&gt;
+
+&lt;p&gt;Right. In an attempt to get more offtopic fun going and to get more people to
+cook real food, we will start a cooking competition.
+Probably with more focus on the cooking and less focus on the competition.
+The goal after all lies on the fun of experimenting in the kitchen, trying out
+new meals and get becoming your own chef.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-format&quot;&gt;The Format&lt;/h3&gt;
+
+&lt;p&gt;At this point I am not entirely sure how the format will go.
+We probably will do a 2 week run, where everyone can enter with a dish they
+cooked themselves and the recipe and then there will be a vote.
+I guess we’d invite the winner(s) to showcase their dish on the coala blog (maybe
+we can get our own category so we don’t spam it too hard) and maybe we can
+find someone crazy enough to get some form of prizes, who knows.
+As long as there are no real prizes involved, I don’t think any real rules will
+be written as the whole thing is just for fun and giggles.&lt;/p&gt;
+
+&lt;h3 id=&quot;any-timeline&quot;&gt;Any Timeline?&lt;/h3&gt;
+
+&lt;p&gt;Just to get rolling, &lt;strong&gt;the first round will start now and end in two weeks
+(April 29.)&lt;/strong&gt;.
+If you want to participate, just cook something, make nice pictures of the
+result (maybe also during the cooking part), &lt;del&gt;write a blog post and get it onto
+the coala blog.&lt;/del&gt;&lt;br /&gt;
+&lt;strong&gt;Update:&lt;/strong&gt; Create a PR to &lt;a href=&quot;https://github.com/coala/recipes&quot;&gt;coala/recipes&lt;/a&gt;
+with your entry as a .md file and blog post format.&lt;br /&gt;
+The first round will mostly be an idea finding time to figure out how we can
+organize this and how it is supposed to work. :)&lt;/p&gt;
+
+&lt;p&gt;Finally, have fun cooking!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 15 Apr 2017 00:00:00 +0200</pubDate>
+        <link>/articles/17/coala-call-for-chefs</link>
+        <guid isPermaLink="true">/articles/17/coala-call-for-chefs</guid>
+        
+        <category>community</category>
+        
+        
+        <category>coala</category>
+        
+      </item>
+    
+      <item>
+        <title>The Birth of a coala</title>
+        <description>&lt;p&gt;This is my first entry on the coala blog. Welcome everyone.
+My name is Maximilian and I am the community team leader for coala since
+December. In this post I want to talk about the teams in coala and
+especially about the community team, its members and our work so far.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;teams-in-coala&quot;&gt;Teams in coala&lt;/h2&gt;
+
+&lt;p&gt;I had the idea for the teams around EuroPython 2016 as a way to take part of
+the organisatory burden from Lasse. At that time he was making almost all the
+meaningful decisions in coala, not because he wanted to, but because
+everyone asked him. This meant that Lasse had almost no time to do anything
+besides organization and management stuff. Considering that he is one of our
+more experienced developers that sounds like a waste of potential. Not to say
+that he wasn’t doing an awesome job managing everything, but maybe someone
+else could take on the management role and free some of Lasse’s time up for
+developing again. Thus the teams idea was born.
+Having team leaders that take over parts of the management burden associated
+with their team’s scope would leave Lasse more free time, add more voices
+and brains to decisions and diversify our “leadership rank”. In the end
+Monolythic management can only get you so far. If you want to read more about
+the structure of teams in coala you can take a look at the
+&lt;a href=&quot;https://github.com/coala/cEPs/blob/master/cEP-0003.md&quot;&gt;teams cEP&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;meet-the-community-team&quot;&gt;Meet the community Team&lt;/h2&gt;
+
+&lt;p&gt;I started recruiting members right after the election was over and found
+a number of like-minded coalians that were interested in community work in
+the broader sense.
+We have Lasse, who has his fingers everywhere but especially wanted to help
+with the GSoC again.
+Mariatta, yeay an imdb star!, who is interested in the wellbeing of
+the community and the newcomer experience, Hemang, our frontend guru, Kaisar
+the backend equivalent and Udayan who will work on administering RGSoC
+(besides being the Research team leader, awesome!).&lt;/p&gt;
+
+&lt;p&gt;Together we have many ideas on how to improve and grow a healthy community.
+Creating a welcoming environment where everyone feels welcome, a place where
+we can teach and learn from each other, a place where we can exchange mutual
+interests, a place to grow as professionals and humans.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-we-achieved-so-far&quot;&gt;What we achieved so far&lt;/h2&gt;
+
+&lt;p&gt;This section is part of a activity report we wanted to implement for all
+teams. Partly to create a mechanism of control for the rest of the coala
+community but mainly to give the teams a place and platform to talk about
+the awesome stuff they create and work on.&lt;/p&gt;
+
+&lt;p&gt;The first thing that I would claim for the community team would be the
+creation of the teams cEP, election for team leaders and all together the
+creation of the coala teams. While the cEP was written by me I had great
+reviewers. I wanted to list them here but looking at the PRs, that would
+be too many names. We had 7 leader applications for 6 teams and
+recently we added the review team with another Max as leader.&lt;/p&gt;
+
+&lt;p&gt;After that Mariatta added the &lt;a href=&quot;http://coala.io/coc&quot;&gt;Code of Conduct&lt;/a&gt; which
+was lacking until then.
+This enabled Udayan to apply coala for the RGSoC, which just got accepted.
+YEAY!&lt;/p&gt;
+
+&lt;p&gt;After that we finally got our call for participation out so all the
+coalians who want to become team members knew it was possible. We got a
+lot of applications and so far it looks promising.&lt;/p&gt;
+
+&lt;p&gt;And finally Hemang and Kaisar wove their web-dev magic (dark arts if you ask
+me) and created not only a new &lt;a href=&quot;http://coala.io&quot;&gt;landing page&lt;/a&gt; but also
+this awesome &lt;a href=&quot;https://projects.coala.io&quot;&gt;projects page&lt;/a&gt;. Although evil
+tongues claim the landing page was not only a community team effort I claim
+that all your page are belong to us.&lt;/p&gt;
+
+&lt;p&gt;You should definitely check out all the cool stuff created and give some love
+to the members of this awesome team.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-coming-up-next&quot;&gt;What’s coming up next&lt;/h2&gt;
+
+&lt;p&gt;We are in the process of finalizing our GSoC application but there will be a
+blog post about that in the future I guess. Let’s just say that the new
+projects page will hopefully help us a lot (and everyone else who decides to
+use it. Open source baby!) and we have some exciting projects and
+collaborations in the pipeline.&lt;/p&gt;
+
+&lt;p&gt;Besides the huge GSoC effort, I am in the process of rewriting the
+&lt;a href=&quot;https://github.com/coala/cEPs/pull/62&quot;&gt;members cEP&lt;/a&gt;, which includes some
+major changes to our newcomer guide and we are working on improving the
+communication for maintainers. Hopefully this will be the done until our
+next post.&lt;/p&gt;
+
+&lt;p&gt;If you have ideas, questions, comments or other input, visit us in our
+&lt;a href=&quot;https://gitter.im/coala/community&quot;&gt;gitter channel&lt;/a&gt; or drop us an email
+under &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;community at coala.io&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Until next time,&lt;/p&gt;
+
+&lt;p&gt;Your Community Team&lt;/p&gt;
+</description>
+        <pubDate>Mon, 30 Jan 2017 00:00:00 +0100</pubDate>
+        <link>/articles/17/coala-birth</link>
+        <guid isPermaLink="true">/articles/17/coala-birth</guid>
+        
+        <category>community</category>
+        
+        
+        <category>coala</category>
+        
+      </item>
+    
+      <item>
+        <title>Hello World!</title>
+        <description>&lt;p&gt;So it begins :)&lt;/p&gt;
+</description>
+        <pubDate>Tue, 17 Jan 2017 00:00:00 +0100</pubDate>
+        <link>/articles/17/hello-world</link>
+        <guid isPermaLink="true">/articles/17/hello-world</guid>
+        
+        
+        <category>personal</category>
+        
+      </item>
+    
   </channel>
 </rss>
